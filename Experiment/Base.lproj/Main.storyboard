@@ -39,7 +39,7 @@
         <!--Demos Switcher View Controller-->
         <scene sceneID="tZC-7z-HPS">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="cU7-sL-l4C" customClass="DemosSwitcherViewController" customModule="Experiment" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="switcher" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="cU7-sL-l4C" customClass="DemosSwitcherViewController" customModule="Experiment" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hp1-Ut-G5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100" y="-109"/>
@@ -52,7 +52,7 @@
                         <viewControllerLayoutGuide type="top" id="If5-7c-oYk"/>
                         <viewControllerLayoutGuide type="bottom" id="XR5-kb-qoW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HhS-WQ-CHr" customClass="First">
+                    <view key="view" contentMode="scaleToFill" id="HhS-WQ-CHr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

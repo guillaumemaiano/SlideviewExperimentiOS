@@ -8,7 +8,7 @@ import UIKit
 open class DemosSwitcherViewController: UIPageViewController, UIPageViewControllerDelegate {
     
     
-    private class DemosSwitcherDataSource: NSObject, UIPageViewControllerDataSource {
+    private class DemosSwitcherManager: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         
         var pages = [UIViewController]()
         var storyboard: UIStoryboard? {
@@ -66,19 +66,15 @@ open class DemosSwitcherViewController: UIPageViewController, UIPageViewControll
         }
     }
     
-    // Does not do anything special
-    private class DemosSwitcherDelegate: NSObject, UIPageViewControllerDelegate {
-        
-    }
-    
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = DemosSwitcherDelegate()
-        let demoDataSource: DemosSwitcherDataSource = DemosSwitcherDataSource()
-        demoDataSource.storyboard = self.storyboard
-        self.dataSource = demoDataSource
+        let demoManager: DemosSwitcherManager = DemosSwitcherManager()
+        demoManager.storyboard = self.storyboard
+        
+        self.delegate = demoManager
+        self.dataSource = demoManager
         
         
         let pageControl = UIPageControl.appearance()
@@ -86,7 +82,7 @@ open class DemosSwitcherViewController: UIPageViewController, UIPageViewControll
         pageControl.currentPageIndicatorTintColor = UIColor.white
         pageControl.backgroundColor = UIColor.black
         
-        setViewControllers(demoDataSource.getInitialPagesToDisplay(), direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
+        setViewControllers(demoManager.getInitialPagesToDisplay(), direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         didMove(toParentViewController: self)
         
     }
