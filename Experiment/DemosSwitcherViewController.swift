@@ -5,8 +5,9 @@
 
 import UIKit
 
-open class DemosSwitcherViewController: UIPageViewController, UIPageViewControllerDelegate {
+open class DemosSwitcherViewController: UIPageViewController {
     
+    private let demoManager: DemosSwitcherManager = DemosSwitcherManager()
     
     private class DemosSwitcherManager: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         
@@ -70,12 +71,11 @@ open class DemosSwitcherViewController: UIPageViewController, UIPageViewControll
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        let demoManager: DemosSwitcherManager = DemosSwitcherManager()
-        demoManager.storyboard = self.storyboard
+       
+        demoManager.storyboard = storyboard
         
-        self.delegate = demoManager
-        self.dataSource = demoManager
-        
+        delegate = demoManager
+        dataSource = demoManager
         
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
@@ -86,5 +86,8 @@ open class DemosSwitcherViewController: UIPageViewController, UIPageViewControll
         didMove(toParentViewController: self)
         
     }
-    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
 }
